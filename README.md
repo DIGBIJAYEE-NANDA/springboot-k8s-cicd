@@ -57,9 +57,6 @@ http://localhost:30086
 -Kubernetes
 -Jenkins
 -Git & GitHub
-<<<<<<< HEAD
 
 
 [Application is sample java application which has spring boot and Junit tests for one microservice.]
-=======
->>>>>>> 03637dcdb0b887dac8e7b44766c6843a9f9cf490
