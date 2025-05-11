@@ -1,4 +1,5 @@
-# Spring Boot Microservice CI/CD with Docker, Kubernetes & Jenkins
+# springboot-k8s-cicd
+Spring Boot microservice with end-to-end CI/CD pipeline using Jenkins, Docker, and K8s
 
 ## 📌 Project Overview
 This project demonstrates a complete CI/CD pipeline for a Spring Boot microservice using:
@@ -56,6 +57,9 @@ http://localhost:30086
 -Kubernetes
 -Jenkins
 -Git & GitHub
+<<<<<<< HEAD
 
 
 [Application is sample java application which has spring boot and Junit tests for one microservice.]
+=======
+>>>>>>> 03637dcdb0b887dac8e7b44766c6843a9f9cf490
