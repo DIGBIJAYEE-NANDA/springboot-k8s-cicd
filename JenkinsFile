@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+
+    environment {
+        IMAGE_NAME = 'digbijayee/my_app'
+        TAG = 'latest'
+    }
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git branch: 'main', url: 'https://github.com/DIGBIJAYEE-NANDA/springboot-k8s-cicd.git'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    bat 'docker build -t my_app .'
+                }
+            }
+        }
+
+        stage('Push to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                    script {bat """
+                        echo Somu@030821 | docker login -u digbijayee --password-stdin
+                        docker push digbijayee/my_app:latest
+                        """
+                    }
+                }
+            }
+        }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                script {
+                    bat 'kubectl apply -f springboot-deployment.yaml'
+                    bat 'kubectl apply -f springboot-service.yaml'
+                }
+            }
+        }
+    }
+}
